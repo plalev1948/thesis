@@ -13,7 +13,7 @@ class Ship:
         current_dir = os.path.dirname(os.path.abspath(__file__))
 
         # Construct the path to the ship image.
-        image_path = os.path.join(current_dir, 'images', 'ship.bmp')
+        image_path = os.path.join(current_dir, 'images', 'ship3.bmp')
         self.image = pygame.image.load(image_path)
         self.rect = self.image.get_rect()
 
