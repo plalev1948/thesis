@@ -29,14 +29,19 @@ class AlienInvasion:
         while True:
             self._check_events()  # Call the _check_events() method
             self.ship.update()
-            self.bullets.update()
+            self._update_bullets()
             self._update_screen()
 
+    def _update_bullets(self):
+        """Update position of bullets and get rid of old bullets."""
+        # Update bullet positions.
+        self.bullets.update()
+        
             # Get rid of bullets that have disappeared.
-            for bullet in self.bullets.copy():
-                if bullet.rect.bottom <= 0:
-                    self.bullets.remove(bullet)
-            print(len(self.bullets))
+        for bullet in self.bullets.copy():
+          if bullet.rect.bottom <= 0:
+              self.bullets.remove(bullet)
+        print(len(self.bullets))
 
     def _check_events(self):
         # Respond for the keyboard and mouse events.
