@@ -4,3 +4,5 @@ src/__pycache__/ship.cpython-310.pyc
 *.pyc
 *.pyc
 src/__pycache__/settings.cpython-310.pyc
+src/__pycache__/ship.cpython-310.pyc
+*.pyc
