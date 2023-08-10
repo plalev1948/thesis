@@ -96,10 +96,9 @@ class AlienInvasion:
         # Remove any bullets and aliens that have collided.
 
     def _ship_hit(self):
-        """Respond to the ship being hit by an alien."""
-        # Decrement ships left.
-        if self.stats.ships_left > 0:
-
+      """Respond to the ship being hit by an alien."""
+      # Decrement ships left.
+      if self.stats.ships_left > 0:
           # Get rid of any remaining aliens and bullets.
           self.aliens.empty()
           self.bullets.empty()
@@ -110,9 +109,12 @@ class AlienInvasion:
 
           # Pause.
           sleep(0.5)
-        else:
-            self.stats.game_active = False
-            pygame.mouse.set_visible(True)
+      else:
+          # Reset the game statistics.
+          self.stats.reset_stats()
+          self.stats.game_active = False
+          self.sb.prep_score()  # Reset the score display
+          pygame.mouse.set_visible(True)
 
     def _create_fleet(self):
         """Create the fleet of aliens."""
@@ -218,13 +220,14 @@ class AlienInvasion:
         self.bullets.add(new_bullet)
     
     def _check_aliens_bottom(self):
-        """Check if any aliens have reached the bottom of the screen."""
-        screen_rect = self.screen.get_rect()
-        for alien in self.aliens.sprites():
-            if alien.rect.bottom >= screen_rect.bottom:
-                # Treat this the same as if the sip got hit.
-                self._ship_hit()
-                break
+      """Check if any aliens have reached the bottom of the screen."""
+      screen_rect = self.screen.get_rect()
+      for alien in self.aliens.sprites():
+          if alien.rect.bottom >= screen_rect.bottom:
+              # Treat this the same as if the ship got hit.
+              self._ship_hit()
+              self.sb.prep_score()  # Reset the score display
+              break
         
             
     def _update_screen(self):
