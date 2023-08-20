@@ -37,10 +37,24 @@ class Scoreboard:
         self.score_rect.top = 20
 
     def show_score(self):
-        """Draw scores, level and ships to the screen."""
+        """Draw scores, level, and ships to the screen."""
+        self.score_image = self.font.render(f"Current Score: {self.stats.score}", True, self.text_color)
+        self.score_rect = self.score_image.get_rect()
+        self.score_rect.right = self.screen_rect.right - 20
         self.screen.blit(self.score_image, self.score_rect)
+
+        self.high_score_image = self.font.render(f"High Score: {self.stats.high_score}", True, self.text_color)
+        self.high_score_rect = self.high_score_image.get_rect()
+        self.high_score_rect.centerx = self.screen_rect.centerx
+        self.score_rect.top = self.score_rect.top + 10
         self.screen.blit(self.high_score_image, self.high_score_rect)
+
+        self.level_image = self.font.render(f"Level: {self.stats.level}", True, self.text_color)
+        self.level_rect = self.level_image.get_rect()
+        self.level_rect.right = self.screen_rect.right - 20
+        self.level_rect.top = self.score_rect.bottom
         self.screen.blit(self.level_image, self.level_rect)
+
         self.ships.draw(self.screen)
 
     def prep_high_score(self):
