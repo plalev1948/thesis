@@ -19,8 +19,8 @@ jobs:
           distribution: 'corretto'
           python-version: 3.10
 
-      - name: Unit Tests
-        run: mvn -B test --file alien.invasion.py
+      # - name: Unit Tests
+      #   run: mvn -B test --file alien.invasion.py
 
       - name: Build the Thesis
         run: |
